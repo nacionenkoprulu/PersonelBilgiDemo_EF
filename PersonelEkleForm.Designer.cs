@@ -140,6 +140,7 @@
             Name = "PersonelEkleForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Personel Ekle";
+            Load += PersonelEkleForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

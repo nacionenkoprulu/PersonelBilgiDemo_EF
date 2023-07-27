@@ -57,3 +57,7 @@ C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug
 C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\PersonelBilgiProject.genruntimeconfig.cache
 C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\ref\PersonelBilgiProject.dll
 C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\PersonelBilgiProject.PersonelEkleForm.resources
+C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\PersonelBilgiProject.UpdateForm.resources
+C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\PersonelBilgiProject.MaasListele.resources
+C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\PersonelBilgiProject.MaasDetayForm.resources
+C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\PersonelBilgiProject.MaasGuncellemeForm.resources

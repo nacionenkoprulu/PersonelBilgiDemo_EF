@@ -12,34 +12,68 @@ using System.Windows.Forms;
 
 namespace PersonelBilgiProject
 {
-    public partial class PersonelEkleForm : Form
+    public partial class UpdateForm : Form
     {
+        int _updateId;
         PersonelBilgileriDbContext _db = new PersonelBilgileriDbContext();
-        public PersonelEkleForm()
+        Personel _personel;
+
+        public UpdateForm(int id)
         {
             InitializeComponent();
+            _updateId = id;
+
         }
 
-        private void btnEkle_Click(object sender, EventArgs e)
+        private void UpdateForm_Load(object sender, EventArgs e)
         {
-            Ekle();
+            Doldur(_updateId);
+        }
+
+        private void Doldur(int updateId)
+        {
+            _personel = _db.Personel.SingleOrDefault(p => p.Id == updateId);
+
+            tbAd.Text = _personel.Ad;
+            tbSoyad.Text = _personel.Soyad;
+            tbKimlikNo.Text = _personel.KimlikNo;
+            dtpDogumTarihi.Value = _personel.DogumTarih;
+        }
+
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                PersonelGuncelle(_updateId);
+                _db.Personel.Update(_personel);
+                _db.SaveChanges();
+                _personel = null;
+                MessageBox.Show("Güncelleme başarılı!");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Personel güncellenemedi!" + "(" + exc.Message + exc.InnerException?.Message + ")", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+            }
 
         }
 
-        Personel CreatePersonel()
+        private void PersonelGuncelle(int updateId)
         {
 
             string adi = tbAd.Text;
             if (string.IsNullOrWhiteSpace(adi))
             {
                 MessageBox.Show("Lütfen bir personel ismi giriniz!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                return;
             }
             string soyad = tbSoyad.Text;
             if (string.IsNullOrWhiteSpace(soyad))
             {
                 MessageBox.Show("Lütfen bir personel soyadı giriniz!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                return;
             }
 
 
@@ -49,7 +83,7 @@ namespace PersonelBilgiProject
                 if (TCKontrol(kimlikNo) == false)
                 {
                     MessageBox.Show("Hatalı TC kimlik no girdiniz!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
+                    return;
                 }
             }
 
@@ -57,16 +91,14 @@ namespace PersonelBilgiProject
             if (dtpDogumTarihi.Value.Date == DateTime.Now.Date)
             {
                 MessageBox.Show("Lütfen geçerli bir doğum tarihi giriniz!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                return;
             }
 
-            return new Personel
-            {
-                Ad = adi,
-                Soyad = soyad,
-                KimlikNo = kimlikNo,
-                DogumTarih = dtpDogumTarihi.Value
-            };
+
+            _personel.Ad = adi;
+            _personel.Soyad = soyad;
+            _personel.KimlikNo = kimlikNo;
+            _personel.DogumTarih = dtpDogumTarihi.Value;
 
         }
 
@@ -115,31 +147,6 @@ namespace PersonelBilgiProject
             {
                 return false;
             }
-        }
-
-        private void Ekle()
-        {
-
-
-            try
-            {
-                Personel? personel = CreatePersonel();
-                _db.Personel.Add(personel); //Null Referance exception alınıyor...
-                _db.SaveChanges();
-                MessageBox.Show("Personel kaydı eklendi!");
-
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Personel eklenemedi!" + "(" + exc.Message + exc.InnerException?.Message + ")", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
-
-        private void PersonelEkleForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -7,6 +7,9 @@
     <Compile Update="MaasDetayForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="MaasEkleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="MaasGuncellemeForm.cs">
       <SubType>Form</SubType>
     </Compile>

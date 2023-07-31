@@ -29,16 +29,62 @@ namespace PersonelBilgiProject
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            Guncelle();
+                Maas maas = MaasOlustur();
+
+                if (maas != null)
+                {
+                    Guncelle(maas);
+                    MessageBox.Show("Maaş başarıyla güncellendi");
+                }
+
+            }
+            catch (Exception exc)
+            {
+
+                MessageBox.Show("Maas güncellenemedi!" + "(" + exc.Message + exc.InnerException?.Message + ")", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
-        private void Guncelle()
+        private void Guncelle(Maas maas)
+        {
+            _db.Maas.Update(maas);
+            _db.SaveChanges();
+
+        }
+
+
+        Maas MaasOlustur()
         {
 
+            Maas mevcutMaas = _db.Maas.Include(p => p.Personel).SingleOrDefault(m => m.Id == id);
+
+            string yil = tbYil.Text.Trim();
+            if (string.IsNullOrWhiteSpace(tbYil.Text))
+            {
+                MessageBox.Show("Yıl bilgisi boş olamaz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+            Decimal ucret = 0;
+            if (!string.IsNullOrWhiteSpace(tbMaas.Text))
+            {
+                if (!Decimal.TryParse(tbMaas.Text, out ucret))
+                {
+                    MessageBox.Show("Maaş sayısal olmalıdır!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
 
 
+            mevcutMaas.Ucret = ucret;
+            mevcutMaas.Yil = yil;
 
+            return mevcutMaas;
         }
 
         private void MaasGuncellemeForm_Load(object sender, EventArgs e)
@@ -52,7 +98,7 @@ namespace PersonelBilgiProject
                 .Select(maas => new MaasDTO()
                 {
                     Id = maas.Id,
-                    UcretGosterim = maas.Ucret.ToString("C2", new CultureInfo("tr-TR")),
+                    UcretGosterim = maas.Ucret.ToString("N2", new CultureInfo("tr-TR")),
                     Yil = maas.Yil,
 
                     PersonelId = maas.PersonelId,
@@ -77,5 +123,13 @@ namespace PersonelBilgiProject
             tbYil.Text = maas.Yil;
             tbMaas.Text = maas.UcretGosterim;
         }
+
+
+
+
+
+
+
+
     }
 }

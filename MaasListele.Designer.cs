@@ -33,6 +33,7 @@
             btnReflesh = new Button();
             button1 = new Button();
             btnGuncelle = new Button();
+            btnEkle = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvMaas).BeginInit();
             SuspendLayout();
             // 
@@ -65,6 +66,7 @@
             btnReflesh.TabIndex = 3;
             btnReflesh.Text = "Reflesh";
             btnReflesh.UseVisualStyleBackColor = true;
+            btnReflesh.Click += btnReflesh_Click;
             // 
             // button1
             // 
@@ -86,11 +88,25 @@
             btnGuncelle.UseVisualStyleBackColor = true;
             btnGuncelle.Click += btnGuncelle_Click;
             // 
+            // btnEkle
+            // 
+            btnEkle.BackColor = Color.Orange;
+            btnEkle.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEkle.ForeColor = SystemColors.InfoText;
+            btnEkle.Location = new Point(436, 266);
+            btnEkle.Name = "btnEkle";
+            btnEkle.Size = new Size(188, 29);
+            btnEkle.TabIndex = 6;
+            btnEkle.Text = "Yeni Maaş Bilgisi Ekle";
+            btnEkle.UseVisualStyleBackColor = false;
+            btnEkle.Click += btnEkle_Click;
+            // 
             // MaasListele
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(636, 311);
+            Controls.Add(btnEkle);
             Controls.Add(btnGuncelle);
             Controls.Add(button1);
             Controls.Add(label1);
@@ -112,5 +128,6 @@
         private Button btnReflesh;
         private Button button1;
         private Button btnGuncelle;
+        private Button btnEkle;
     }
 }

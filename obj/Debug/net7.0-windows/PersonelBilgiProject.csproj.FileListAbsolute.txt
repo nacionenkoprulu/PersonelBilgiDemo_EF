@@ -61,3 +61,4 @@ C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug
 C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\PersonelBilgiProject.MaasListele.resources
 C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\PersonelBilgiProject.MaasDetayForm.resources
 C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\PersonelBilgiProject.MaasGuncellemeForm.resources
+C:\Users\Lenovo\source\repos\PersonelBilgiProject\PersonelBilgiProject\obj\Debug\net7.0-windows\PersonelBilgiProject.MaasEkleForm.resources

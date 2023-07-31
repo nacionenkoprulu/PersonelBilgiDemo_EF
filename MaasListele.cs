@@ -53,13 +53,14 @@ namespace PersonelBilgiProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvMaas.SelectedRows[0].Cells[0].Value);
+
 
             if (dgvMaas.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Lütfen maaş seçiniz!");
                 return;
             }
+            int id = Convert.ToInt32(dgvMaas.SelectedRows[0].Cells[0].Value);
 
             MaasDetayForm form = new MaasDetayForm(id);
             form.Show();
@@ -69,17 +70,31 @@ namespace PersonelBilgiProject
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
 
-            int id = Convert.ToInt32(dgvMaas.SelectedRows[0].Cells[0].Value);
+
 
             if (dgvMaas.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Lütfen maaş seçiniz!");
                 return;
             }
+            int id = Convert.ToInt32(dgvMaas.SelectedRows[0].Cells["id"].Value);
 
             MaasGuncellemeForm form = new MaasGuncellemeForm(id);
             form.Show();
 
+        }
+
+        private void btnReflesh_Click(object sender, EventArgs e)
+        {
+            FillMaasBilgileri();
+            MaasSutunlariDuzenle();
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            Form ekleForm = new MaasEkleForm();
+            ekleForm.Show();
+  
         }
     }
 }

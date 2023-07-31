@@ -94,7 +94,42 @@ namespace PersonelBilgiProject
         {
             Form ekleForm = new MaasEkleForm();
             ekleForm.Show();
-  
+
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvMaas.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Lütfen maaş satırı seçiniz!");
+                    return;
+                }
+                int id = Convert.ToInt32(dgvMaas.SelectedRows[0].Cells["Id"].Value);
+
+                MaasSil(id);
+
+                FillMaasBilgileri();
+                MaasSutunlariDuzenle();
+            }
+            catch (Exception exc)
+            {
+
+                MessageBox.Show("İşlem sırasında hata meydana geldi! (" + exc.Message + " | " + exc.InnerException?.Message + ")", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MaasSil(int id)
+        {
+
+            Maas maas = _db.Maas.SingleOrDefault(m => m.Id == id);
+
+
+            _db.Maas.Remove(maas);
+            _db.SaveChanges();
+
+
         }
     }
 }

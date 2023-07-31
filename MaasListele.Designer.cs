@@ -34,6 +34,7 @@
             button1 = new Button();
             btnGuncelle = new Button();
             btnEkle = new Button();
+            btnSil = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvMaas).BeginInit();
             SuspendLayout();
             // 
@@ -93,7 +94,7 @@
             btnEkle.BackColor = Color.Orange;
             btnEkle.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnEkle.ForeColor = SystemColors.InfoText;
-            btnEkle.Location = new Point(436, 266);
+            btnEkle.Location = new Point(435, 266);
             btnEkle.Name = "btnEkle";
             btnEkle.Size = new Size(188, 29);
             btnEkle.TabIndex = 6;
@@ -101,11 +102,22 @@
             btnEkle.UseVisualStyleBackColor = false;
             btnEkle.Click += btnEkle_Click;
             // 
+            // btnSil
+            // 
+            btnSil.Location = new Point(212, 266);
+            btnSil.Name = "btnSil";
+            btnSil.Size = new Size(94, 29);
+            btnSil.TabIndex = 7;
+            btnSil.Text = "Maaş Sil";
+            btnSil.UseVisualStyleBackColor = true;
+            btnSil.Click += btnSil_Click;
+            // 
             // MaasListele
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(636, 311);
+            Controls.Add(btnSil);
             Controls.Add(btnEkle);
             Controls.Add(btnGuncelle);
             Controls.Add(button1);
@@ -129,5 +141,6 @@
         private Button button1;
         private Button btnGuncelle;
         private Button btnEkle;
+        private Button btnSil;
     }
 }

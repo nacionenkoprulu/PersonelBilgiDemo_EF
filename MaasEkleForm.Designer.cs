@@ -123,8 +123,9 @@
             btnGuncelle.Name = "btnGuncelle";
             btnGuncelle.Size = new Size(153, 29);
             btnGuncelle.TabIndex = 3;
-            btnGuncelle.Text = "Güncelle";
+            btnGuncelle.Text = "Ekle";
             btnGuncelle.UseVisualStyleBackColor = true;
+            btnGuncelle.Click += btnGuncelle_Click;
             // 
             // groupBox1
             // 
@@ -151,7 +152,7 @@
             ddlPersonel.Name = "ddlPersonel";
             ddlPersonel.Size = new Size(338, 28);
             ddlPersonel.TabIndex = 1;
-            ddlPersonel.SelectedIndexChanged += ddlPersonel_SelectedIndexChanged;
+            ddlPersonel.SelectionChangeCommitted += ddlPersonel_SelectedIndexChanged;
             // 
             // lDogumTarihi
             // 
